@@ -1,0 +1,17 @@
+[
+    {
+        "job_id": "#1",
+        "task_id": "01_table_creation.sql",
+        "target_table": "PROJECT.CST_ININ"
+    },
+    {
+        "job_id": "#1",
+        "task_id": "02_data_insertion.sql",
+        "target_table": "PROJECT.CST_ININ"
+    },
+    {
+        "job_id": "#1",
+        "task_id": "03_data_selection.sql",
+        "target_table": "PROJECT.CST_ININ"
+    }
+]
