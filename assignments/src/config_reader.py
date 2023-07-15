@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-######################################################
-#    프로그램명    : config_reader.py
-#    작성자        : Gyu Won Hong
-#    작성일자      : 2022.10.10
-#    파라미터      : None
-#    설명          : config 파일을 파싱하여 가져오는 파일 (default : 해당 파일과 동일 경로에 있는 *.cfg를 읽는다)
-######################################################
-
 import glob
 import configparser
 from typing import List
@@ -19,7 +11,8 @@ logging.basicConfig(
     datefmt = '%Y-%m-%d %H:%M:%S',
     level = logging.INFO
 )
-'''
+
+"""
 실제 App 구현을 한다면 Query를 날리는 등 개별 사용자가 각 사용자 config에 맞게 여러 화면(개별 class)에서
 공통된 설정 값을 가져오기 위해 ConfigReader를 싱글톤 패턴 적용하였다. 이는 앱 사용동안 단 하나의 인스턴스의
 메모리 주소에 접근하여 여러 인스턴스가 생성되는 것을 막아 메모리 누수를 막을 수 있다.
@@ -28,7 +21,7 @@ ConfigReader는 사용자별 CONFIG에 맞게 설정을 영구저장하는 파�
 인풋 값을 받아 유효성을 검정하고 유효성이 인정될 때만 DB로 read와 write를 할 수 있는 등. 일부 section의 값에는
 설정 변경에 대한 허가여부 및 값 범위에 대한 검정이 필요하겠지만, 해당 환경에서는 MySQL의 DB접속 정보 및
 그 외 부가적인 정보 Log Level, Job의 분기 디렉토리 경로 등을 명시적으로 기재하였다. 
-'''
+"""
 
 class ConfigReader:
 
