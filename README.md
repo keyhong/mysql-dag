@@ -3,10 +3,10 @@ python-etl-pipeline
 
 파이썬 elt 프로그램
 
-| Pipeline Component                     | Version | Description              |
+| Component                              | Version | Description              |
 |----------------------------------------|---------|--------------------------|
-| [MySQL](https://www.mysql.com/)        | 8.0.29   | Relational Database      |
-| [Python](https://trino.io/)            | 3.7.13  | Program Language      |
+| [MySQL](https://www.mysql.com/)        | 8.0.29   | Relational Database     |
+| [Python](https://trino.io/)            | 3.7.13  | Program Language         |
 
 ## Getting Started
 
