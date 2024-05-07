@@ -1,17 +1,20 @@
+version: '3.9'
+
 services:
   mysql:
     image: mysql:8.0.29
-    container_name : project-mysql    
+    container_name : project-mysql
     environment:
       MYSQL_USER: 'PROJECT'
       MYSQL_DATABASE: 'PROJECT'
       MYSQL_PASSWORD: 'PROJECT'
       MYSQL_ROOT_PASSWORD: 'ROOT'
       TZ: Asia/Seoul
-    volumes:
-      - ./context-files/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     ports:
-      - 13306:3306
+      - 3306:3306
+    restart : unless-stopped    
+    volumes:
+      - ./context-files/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d  
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
       timeout: 10s
@@ -22,14 +25,14 @@ services:
       - --skip-character-set-client-handshake      
       
   python:
-    image: python:3.7.13
-    container_name : project-python
-    restart : always    
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python-etl-pipeline:v1.1.0
+    container_name : python-etl-pipeline
     depends_on:
       mysql:
         condition: service_healthy
     volumes:
-      - ./context-files/python:/tmp/context-files
-      - ./assignments:/tmp/assignments
-      - ./result:/tmp/result
-    command: ["bash", "/tmp/context-files/rc.sh"]
+      - ./python-etl-pipeline:/app
+    command: ["sleep", "60000"]
